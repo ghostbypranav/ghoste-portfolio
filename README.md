@@ -1,1 +1,1 @@
-[![Portfolio](https://img.shields.io/badge/Visit-Portfolio-blue?style=for-the-badge)](https://ghostbypranav.github.io/ghoste-portfolio/)
+[![Blue rectangular badge with the text Visit Portfolio, inviting the viewer to access a personal portfolio site](https://img.shields.io/badge/Visit-Portfolio-blue?style=for-the-badge)](https://ghostbypranav.github.io/ghoste-portfolio/)
