@@ -105,6 +105,10 @@
     .lead-stat { margin: 23px 0; }
     .lead-stat strong { display: block; font: 86px/1.1 var(--serif); letter-spacing: -.065em; color: var(--green); }
     .lead-stat span { display: block; font-size: 15px; margin-top: 6px; }
+    .lead-meta { display: grid; grid-template-columns: 1fr 1fr; margin: 0 0 18px; padding-top: 14px; border-top: 1px solid #c9d0c3; }
+    .lead-meta div + div { padding-left: 20px; border-left: 1px solid #c9d0c3; }
+    .lead-meta dt { font-size: 10px; color: var(--muted); }
+    .lead-meta dd { margin: 3px 0 0; font: 24px/1.2 var(--serif); color: var(--green); }
     .work-figure figcaption { color: var(--muted); font-size: 11px; max-width: 380px; line-height: 1.6; }
     .beetot-figure { background: #eee8df; }
     .beetot-figure .eyebrow { color: var(--accent); }
@@ -242,6 +246,7 @@
       .ops-row { grid-template-columns: 1fr; gap: 19px; }
       .ops-flow { gap: 8px; font-size: 9px; }
       .ops-flow span + span::before { margin-right: 8px; }
+      .result-tabs { gap: 18px; flex-wrap: wrap; }
       .metrics { grid-template-columns: 1fr 1fr; gap: 25px 0; }
       .metrics > div { padding-right: 15px; }
       .metrics > div + div { padding-left: 20px; }
@@ -306,7 +311,7 @@
       </div>
     </nav>
   </header>
-
+ 
   <main id="main">
     <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="wrap">
@@ -343,13 +348,13 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="section wrap" id="work" aria-labelledby="work-title">
       <div class="section-head">
         <p class="eyebrow">01 / Selected work</p>
         <div><h2 id="work-title">The work behind the numbers.</h2><p class="section-intro">A closer look at the brands, storefronts and customer journeys I've worked on.</p></div>
       </div>
-
+ 
       <article class="work" aria-labelledby="nutrimonk-title">
         <div class="work-top">
           <div class="work-info">
@@ -361,9 +366,13 @@
           </div>
           <figure class="work-figure">
             <p class="eyebrow">Regional lead generation</p>
-            <!-- CV-reported aggregate. Do not label these as unique buyers or qualified leads. -->
-            <div class="lead-stat"><strong>970+</strong><span>lead records across campaign sheets</span></div>
-            <figcaption>Reported aggregate from tracked regional campaigns. Lead records are not a measure of purchases or unique qualified customers.</figcaption>
+            <!-- Business-reported totals. Sales are reported against these lead campaigns; spend is approximate. -->
+            <div class="lead-stat"><strong>1.9K</strong><span>leads from regional lead campaigns</span></div>
+            <dl class="lead-meta">
+              <div><dt>Ad spend</dt><dd>~₹60K</dd></div>
+              <div><dt>Reported sales</dt><dd>₹6.4L</dd></div>
+            </dl>
+            <figcaption>Reported totals from regional lead campaigns. Spend is approximate and sales are as reported by the business from these leads.</figcaption>
           </figure>
         </div>
         <details class="case-details">
@@ -371,11 +380,11 @@
           <div class="case-grid">
             <div><h4>The brief</h4><p>Support product discovery and customer acquisition for NutriMonk's sweetener range, with regional communication and a clear path from an ad to the store or sales team.</p></div>
             <div><h4>My contribution</h4><ul><li>Built and refined Shopify sections, product pages and purchase information using Liquid, HTML, CSS and JavaScript.</li><li>Managed Meta campaign setup, regional creatives, audience testing and reporting.</li><li>Worked on TeleCRM and Wabis follow-up workflows, marketplace listings and fulfilment data.</li></ul></div>
-            <div><h4>What I track</h4><p>Separate traffic, lead and purchase reporting. The lead aggregate comes from tracked campaign sheets; the dated traffic and purchase snapshots below show their own costs and limits.</p></div>
+            <div><h4>What I track</h4><p>Separate traffic, lead and purchase reporting. The lead campaigns delivered about 1.9K leads on roughly ₹60K of spend (about ₹32 per lead) and ₹6.4 lakh in reported sales. The dated traffic and purchase snapshots below carry their own costs and limits.</p></div>
           </div>
         </details>
       </article>
-
+ 
       <article class="work" aria-labelledby="beetot-title">
         <div class="work-top">
           <div class="work-info">
@@ -404,23 +413,34 @@
           </div>
         </details>
       </article>
-
+ 
       <article class="ops-row" aria-labelledby="ops-title">
         <div><p class="eyebrow muted">03 — Internal operations / NutriMonk</p><h3 id="ops-title">Making order data usable.</h3></div>
         <div><p>Shipping-label preparation, customer-record matching and delivery-report reconciliation. Practical workflows that help connect lead data with the work of fulfilling an order.</p><div class="ops-flow" aria-label="Workflow"><span>Lead records</span><span>Order matching</span><span>Delivery reporting</span></div></div>
       </article>
     </section>
-
+ 
     <section class="section results" id="results" aria-labelledby="results-title">
       <div class="wrap">
         <div class="section-head">
           <p class="eyebrow">02 / Campaign results</p>
           <div><h2 id="results-title">A number needs context.</h2><p class="section-intro">Selected NutriMonk campaign snapshots, with the objective, spend and reporting date kept together.</p></div>
         </div>
-        <!-- Both panels remain readable if JavaScript is disabled. -->
+        <!-- All panels remain readable if JavaScript is disabled. -->
         <div class="result-tabs" id="result-tabs" role="tablist" aria-label="Campaign snapshots" hidden>
-          <button type="button" id="traffic-tab" role="tab" aria-selected="true" aria-controls="traffic-panel">Traffic campaign</button>
+          <button type="button" id="lead-tab" role="tab" aria-selected="true" aria-controls="lead-panel">Lead campaigns</button>
+          <button type="button" id="traffic-tab" role="tab" aria-selected="false" aria-controls="traffic-panel" tabindex="-1">Traffic campaign</button>
           <button type="button" id="purchase-tab" role="tab" aria-selected="false" aria-controls="purchase-panel" tabindex="-1">Purchase test</button>
+        </div>
+        <div class="result-panel" id="lead-panel">
+          <div class="panel-heading"><h3>Leads that turned into sales</h3><p class="eyebrow">Meta Ads · Regional lead campaigns</p></div>
+          <dl class="metrics">
+            <div><dt>Leads generated</dt><dd>1.9K</dd></div>
+            <div><dt>Approx. ad spend</dt><dd>~₹60K</dd></div>
+            <div><dt>Approx. cost / lead</dt><dd>~₹32</dd></div>
+            <div><dt>Reported sales</dt><dd>₹6.4L</dd></div>
+          </dl>
+          <div class="result-foot"><p><strong>What it shows:</strong> about 1.9K leads at roughly ₹32 each, with ₹6.4 lakh in sales reported from them. That is about 10.7× sales to ad spend, before product, fulfilment and team costs.</p><p class="source">Self-reported totals across lead campaigns. Spend is rounded to ₹60K; cost per lead (₹60,000 ÷ 1,900) and the sales-to-spend ratio are approximate.</p></div>
         </div>
         <div class="result-panel" id="traffic-panel">
           <div class="panel-heading"><h3>Traffic to the storefront</h3><p class="eyebrow">Meta Ads · 13 Aug 2026 · One day</p></div>
@@ -445,7 +465,7 @@
         <p class="results-note">Historical, self-reported campaign snapshots. These figures represent separate reports and are not added together as an account total.</p>
       </div>
     </section>
-
+ 
     <section class="section experience wrap" id="experience" aria-labelledby="experience-title">
       <div class="section-head"><p class="eyebrow">03 / Experience</p><div><h2 id="experience-title">Close to the work.</h2><p class="section-intro">Roles spanning campaigns, storefront development and day-to-day e-commerce operations.</p></div></div>
       <div class="experience-row">
@@ -464,7 +484,7 @@
         <p class="experience-description">Shopify store operations for Beetot, including catalog management, Meta Ads, payment integrations and fulfilment coordination.</p>
       </div>
     </section>
-
+ 
     <section class="section wrap" id="about" aria-labelledby="about-title">
       <div class="about-grid">
         <div class="about-left"><p class="eyebrow">04 / About &amp; capabilities</p><p class="about-location">Malappuram,<br>Kerala.</p><p>Working across marketing, commerce and the web.</p></div>
@@ -484,7 +504,7 @@
         </div>
       </div>
     </section>
-
+ 
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-grid">
         <div><span class="eyebrow">05 / Get in touch</span><h2 id="contact-title">Let's talk about<br>your next chapter.</h2><p>For marketing roles, Shopify projects or e-commerce work, tell me what you're building.</p></div>
@@ -501,7 +521,7 @@
     </section>
   </main>
   <footer class="footer"><div class="wrap footer-inner"><p>© <span id="year">2026</span> Pranav K · Marketing &amp; E-commerce</p><div class="footer-links"><a href="https://github.com/ghostbypranav" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow" aria-hidden="true">↗</span></a><a href="#main">Back to top ↑</a></div></div></footer>
-
+ 
   <script>
     (() => {
       'use strict';
@@ -541,7 +561,7 @@
       });
       if (mobile.addEventListener) mobile.addEventListener('change', () => closeMenu());
       header.classList.add('js-nav');
-
+ 
       // Accessible result tabs, with arrow-key / Home / End navigation.
       const tabList = document.getElementById('result-tabs');
       const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
@@ -572,7 +592,7 @@
       selectTab(tabs[0]);
       tabList.hidden = false;
       document.querySelector('.results').classList.add('js-tabs');
-
+ 
       const copyButton = document.getElementById('copy-email');
       const copyStatus = document.getElementById('copy-status');
       const emailLink = document.getElementById('email-link');
@@ -588,7 +608,7 @@
         }
       });
       document.getElementById('year').textContent = new Date().getFullYear();
-
+ 
       // A quiet current-section indicator. Never hides page content.
       if ('IntersectionObserver' in window) {
         const links = Array.from(menu.querySelectorAll('a[href^="#"]'));
@@ -607,3 +627,4 @@
   </script>
 </body>
 </html>
+ 
